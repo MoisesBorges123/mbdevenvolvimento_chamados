@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Terminal extends Component
 {
-    public $resultado, $comando;
+    public $resultado, $comando;    
     public function render()
     {
         return view('livewire.configuracoes.desenvolvedor.terminal');

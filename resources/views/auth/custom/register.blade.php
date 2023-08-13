@@ -12,8 +12,8 @@
 									<div class="card-body">
 										<form method="POST" action="{{ route('register') }}">
 											@csrf
-										<h2 class="display-4 mb-2 font-weight-bold error-text text-center"><strong>Chamados</strong></h2>
-										<h4 class="text-white-80 	 text-center">Faça parte da nossa plataforma de gerenciamento de chamados.</h4>
+										<h2 class="display-4 mb-2 font-weight-bold error-text text-center"><strong>Gestão Financeira</strong></h2>
+										<h4 class="text-white-80 	 text-center">Faça parte da nossa plataforma de gerenciamento de financeiro.</h4>
 										<h5 class="text-white-80 mb-7 text-center">MB Desenvolvimento</h5>
 										<div class="row">
 											<div class="col-9 d-block mx-auto">
@@ -51,8 +51,7 @@
 														</div>
 													</div>
 													<input type="password" class="form-control" name='password_confirmation' placeholder="Confirmar Senha">
-												</div>
-												<livewire:components.select-setores></livewire:components.select-setores>
+												</div>												
 												<div class="row">
 													<div class="col-12">
 														<button type="submit" class="btn  btn-secondary btn-block px-4">Cadastrar e entrar <i class="fa fa-chevron-right"></i> </button>

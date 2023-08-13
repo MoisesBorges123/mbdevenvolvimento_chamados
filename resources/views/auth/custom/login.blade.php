@@ -24,7 +24,7 @@
 															<i class="fe fe-user"></i>
 														</div>
 													</div>
-													<input type="text" class="form-control" name='email' placeholder="E-mail">
+													<input type="text" class="form-control" name='email' value="{{old('email')}}" placeholder="E-mail">
 												</div>
 												<div class="input-group mb-4">
 													<div class="input-group-prepend">

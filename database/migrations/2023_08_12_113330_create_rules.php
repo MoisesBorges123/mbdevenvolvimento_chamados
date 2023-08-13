@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterCallingsConfirmed extends Migration
+class CreateRules extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AlterCallingsConfirmed extends Migration
      */
     public function up()
     {
-        Schema::table('callings',function(Blueprint $table){
-            $table->string('confirmed')->nullable();
-            $table->foreignId('confirmed_by')->nullable();
+        Schema::create('rules', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('profile_id');
+            $table->string('access');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class AlterCallingsConfirmed extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('rules');
     }
 }

@@ -1,7 +1,7 @@
 <div class='row justify-content-center mb-5 pb-5'>
     <div class="col-md-6 col-sm-12">
         <div class="card">
-            <div class="card-head">
+            <div class="card-header">
                 <h5 class="card-title">Terminal Artisan</h5>               
             </div>
             <div class="card-body">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-6 col-sm-12">
         <div class="card">
-            <div class="card-head">
+            <div class="card-header">
                 <h5 class="card-title">Resultado</h5>
             </div>
             <div class="card-body">

@@ -203,7 +203,7 @@
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
 												<div class="text-center">
 													<a href="{{url('/' . $page='#')}}" class="dropdown-item text-center user pb-0 font-weight-bold">{{Auth::user()->name}}</a>													
-													<span class="text-center user-semi-title">{{Auth::user()->department->name}}</span>
+													<span class="text-center user-semi-title">xxxx</span>
 													<div class="dropdown-divider"></div>
 												</div>																								
 												<form method="POST" class="dropdown-item d-flex" action="{{ route('logout') }}" >

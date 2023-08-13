@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUrgencies extends Migration
+class CreateCategorialan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateUrgencies extends Migration
      */
     public function up()
     {
-        Schema::create('urgencies', function (Blueprint $table) {
+        Schema::create('categorialantypelan', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->double('time_waiting');
+            $table->foreign('typelan_id');
+            $table->string('description')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateUrgencies extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('urgencies');
+        Schema::dropIfExists('categorialantypelan');
     }
 }

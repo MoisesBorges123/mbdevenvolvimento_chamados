@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfiles extends Migration
+class CreateConts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateProfiles extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('conts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('saldo'); 
+            $table->boolean('bancaria')->default(false);
+            $table->boolean('empresarial')->default(false);            
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +31,6 @@ class CreateProfiles extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('conts');
     }
 }
