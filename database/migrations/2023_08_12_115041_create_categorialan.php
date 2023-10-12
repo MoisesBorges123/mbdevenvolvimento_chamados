@@ -16,7 +16,7 @@ class CreateCategorialan extends Migration
         Schema::create('categorialantypelan', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreign('typelan_id');
+            $table->foreignId('typelan_id');
             $table->string('description')->nullable();
             $table->timestamps();
         });

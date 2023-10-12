@@ -29,10 +29,10 @@ class Terminal extends Component
     
             }catch(\Exception $e)
             {
-                $this->emit('toast',$e->getMessage(),'error');
+                $this->emit('swal',$e->getMessage(),'error');
             }
         }else{
-            $this->emit('toast','Por favor digite um comando','warning');
+            $this->emit('swal','Por favor digite um comando','warning');
         }
         
     }

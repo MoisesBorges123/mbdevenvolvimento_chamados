@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypelan extends Migration
+class CreateProducs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateTypelan extends Migration
      */
     public function up()
     {
-        Schema::create('typelan', function (Blueprint $table) {
-            $table->id();
+        Schema::create('products', function (Blueprint $table) {
+            $table->bigInteger('id');
+            $table->primary('id');
             $table->string('name');
-            $table->boolean('positive')->default(true);
+            $table->string('undType')->nullable();
+            $table->integer('codigo')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ class CreateTypelan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typelan');
+        Schema::dropIfExists('products_sevices');
     }
 }

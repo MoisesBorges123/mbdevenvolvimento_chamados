@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class CategoriaSupplier extends Model
 {
     use HasFactory;
-    protected $table = 'profiles';
+    protected $table= 'categor_supplier';
     public $fillable = [
-        'name'
+        'name',
+        'description'
     ];
-    public function rules(){
-        return $this->hasMany(Rule::class);
-    }
+
 }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Rule extends Model
 {
     use HasFactory;
+    protected $table = 'rules';
+    public $fillable = [
+        'profile_id',
+        'access'
+    ];
+    public function profile(){
+        return $this->belongsTo(Profile::class,'profile_id','id');
+    }
 }

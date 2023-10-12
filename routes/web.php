@@ -8,6 +8,7 @@ use App\Http\Livewire\{
 
     //Configurações
     Configuracoes\Desenvolvedor\Terminal,
+    User\Dashboard as UserDashboard,
 
     };
 /*
@@ -36,5 +37,6 @@ Route::middleware([
     Route::get('/dashboard',Painel::class)->name('dashboard');           
     Route::prefix('configuracoes')->name('config.')->group(function(){
         Route::get('/terminal',Terminal::class)->name('terminal');
+        Route::get('/usuarios',UserDashboard::class)->name('users');
     });
 });

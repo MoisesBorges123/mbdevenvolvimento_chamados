@@ -16,13 +16,12 @@ class CreateLancamentos extends Migration
         Schema::create('lancamentos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('cagorialan_id');
+            $table->foreignId('categorialan_id');
             $table->date("date_transaction");
             $table->double('value_transaction');
             $table->text('description');
             $table->string('nfe');
-            $table->foreignId('supplier_id')->nullable();
-            $table->foreignId('shopping_cart')->nullable();
+            $table->morphs('transactable'); // se foi uma compra ou pagamento de despesa
             $table->timestamps();
         });
     }

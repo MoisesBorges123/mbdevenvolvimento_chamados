@@ -12,8 +12,8 @@
 									<div class="card-body">
 										<form method="POST" action="{{ route('login') }}">
 											@csrf
-										<h2 class="display-4 mb-2 font-weight-bold error-text text-center"><strong>Chamados</strong></h2>
-										<h4 class="text-white-80 text-center">Conectar a sua plataforma de chamados.</h4>
+										<h2 class="display-4 mb-2 font-weight-bold error-text text-center"><strong>Finanças</strong></h2>
+										<h4 class="text-white-80 text-center">Gerencie seu dinheiro de um jeito mais fácil.</h4>
 										<h5 class="text-white-80 mb-7 text-center">MB Desenvolvimento</h5>
 
 										<div class="row">

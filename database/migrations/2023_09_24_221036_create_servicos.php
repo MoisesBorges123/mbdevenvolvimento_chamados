@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypelan extends Migration
+class CreateServicos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTypelan extends Migration
      */
     public function up()
     {
-        Schema::create('typelan', function (Blueprint $table) {
+        Schema::create('servicos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('positive')->default(true);
             $table->string('description')->nullable();
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateTypelan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typelan');
+        Schema::dropIfExists('servicos');
     }
 }
