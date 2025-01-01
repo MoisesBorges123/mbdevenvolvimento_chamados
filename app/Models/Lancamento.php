@@ -17,13 +17,15 @@ class Lancamento extends Model
         'date_transaction',
         'value_transaction',
         'description',
-        'nfe',
-       // 'supplier_id',
+        'link_nfe',
+        'transact_type',
+        'count_id',
         //'shopping_cart'
     ];
-    public function transactable()
+    public function tags()
     {
-        return $this->morphTo();
+        
+        return $this->belongsToMany(Tag::class,'tag_lancamentos','tag_id','lancamento_id');
     } 
     public function categoria()
     {

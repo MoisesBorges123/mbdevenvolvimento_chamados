@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Cont;
 
 class User extends Authenticatable
 {
@@ -62,5 +63,8 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class,'profile_id','id');
     }
-   
+    public function contas()
+    {
+        return $this->belongsToMany(Cont::class,'users_counts','user_id','cont_id');
+    }
 }

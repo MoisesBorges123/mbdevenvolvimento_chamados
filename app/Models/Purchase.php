@@ -14,7 +14,8 @@ class Purchase extends Model
         'description',
         'value',
         'date_buy',
-        'date_recive'
+        'date_recive',
+        'chave_nfe'
         
     ];
    

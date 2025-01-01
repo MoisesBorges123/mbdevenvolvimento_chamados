@@ -16,7 +16,7 @@ class UsersCounts extends Migration
         Schema::create('users_counts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreign('cont_id');
+            $table->foreignId('cont_id');
             $table->timestamps();
         });
     }

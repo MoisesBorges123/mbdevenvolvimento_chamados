@@ -14,11 +14,17 @@ class Cont extends Model
     public $fillable = [
         'name',
         'saldo',
-        'bancaria',
-        'empresarial',
+        'banking_id',
+        'agencia',
+        'num_count',
+        'empresarial'
     ];
     public function usersOwner()
     {
-        return $this->belongsToMany(User::class,'users_counts','user_id','cont_id');
+        return $this->belongsToMany(User::class,'users_counts','cont_id','user_id');
     }
+    public function banco()
+    {
+        return $this->belongsTo(Banking::class,'banking_id','id');
+    } 
 }

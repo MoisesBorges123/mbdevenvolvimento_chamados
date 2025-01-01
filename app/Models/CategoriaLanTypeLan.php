@@ -11,11 +11,12 @@ class CategoriaLanTypeLan extends Model
     protected $table = 'categorialantypelan';
     public $fillable = [
         'name',
-        'typelan_id',
-        'description'
+        'naturelan_id',
+        'description',
+        'user_id'
     ];
     public function tipoLancamento()
     {
-        return $this->belongsTo(TypeLan::class,'typelan_id','id');
+        return $this->belongsTo(Naturelan::class,'naturelan_id','id');
     }
 }

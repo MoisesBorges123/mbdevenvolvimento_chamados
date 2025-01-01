@@ -19,6 +19,7 @@ class Supplier extends Model
         'site',
         'whatsapp',
         'cidade',
+        'uf',
         'categoria_supplier_id'
     ];
 

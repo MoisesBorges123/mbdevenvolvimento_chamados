@@ -3,6 +3,7 @@
     <head>
        <x-partials.head :title="$title ?? ''"></x-partials.head>		        
        @stack('css')
+       <link rel="stylesheet" href="{{asset('./custom-plugins/instascan/style.css')}}">
     </head>
     <body class="app sidebar-mini gradient-menu">
        

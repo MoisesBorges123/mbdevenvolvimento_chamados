@@ -54,6 +54,63 @@ document.addEventListener('livewire:load', () => {
             }
         })
     });
+    Livewire.on('swal-modal', function(param){
+        Swal.fire({
+            title: is_empty(param.title) ? param.title : '',
+            icon: param.type,
+            html: param.message,
+            width: sizeSwalModal(param.message),
+            position: is_empty(param.footer) ?  param.footer : 'center', //'top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.           
+            grow: is_empty(param.grow), // 'row', 'column, 'fullscreen', 'false'
+            footer: is_empty(param.footer) ?  param.footer : undefined,
+            focusConfirm: is_empty(param.focusConfirm),
+            timer: is_empty(param.timer),
+            timerProgressBar: is_empty(param.timerProgressBar),
+
+            showConfirmButton: is_empty(param.showConfirmButton) ?  param.showConfirmButton : true,
+            confirmButtonText: is_empty(param.confirmButtonText) ?  param.confirmButtonText : 'OK',
+            confirmButtonColor: is_empty(param.confirmButtonColor) ?  param.confirmButtonColor : undefined,
+  
+            showCloseButton: is_empty(param.showCloseButton) ?  param.showCloseButton : true,
+
+            showCancelButton: is_empty(param.showCancelButton),            
+            cancelButtonText: is_empty(param.cancelButtonText) ?  param.cancelButtonText : 'Cancelar',
+            cancelButtonColor: is_empty(param.cancelButtonColor) ?  param.cancelButtonColor : undefined,
+
+            showDenyButton: is_empty(param.showDenyButton),
+            denyButtonText: is_empty(param.denyButtonText) ?  param.denyButtonText : 'Sair',  
+            denyButtonColor: is_empty(param.denyButtonColor) ?  param.denyButtonColor : undefined,
+
+            imageUrl: is_empty(param.imagem) ? (is_empty(param.imagem.url) ? param.imagem.url : undefined) : undefined, 
+            imageWidth: is_empty(param.imagem) ? (is_empty(param.imagem.width) ? param.imagem.width : undefined) : undefined,
+            imageHeight: is_empty(param.imagem) ? (is_empty(param.imagem.height) ? param.imagem.height : undefined) : undefined,
+            imageAlt: is_empty(param.imagem) ? (is_empty(param.imagem.alt) ? param.imagem.alt : undefined) : undefined,
+            
+            showClass: {
+                popup: '`'+
+                  is_empty(param.popupShow) ? param.popupShow : '' //animate__animated animate__fadeInUp  animate__faster
+                +'`'
+              },
+
+              hideClass: {
+                popup: '`'+ param.popupHide //animate__animated   animate__fadeOutDown   animate__faster
+                +'`'
+              },
+
+              customClass: {
+                confirmButton: is_empty(param.customClass) ? (is_empty(param.customClass.confirmButton) ? param.customClass.confirmButton : "btn btn-success") : undefined,
+                cancelButton: is_empty(param.customClass) ? (is_empty(param.customClass.cancelButton) ? param.customClass.cancelButton : "btn btn-success") : undefined,
+              },
+        }).then(function (result) {
+            if (result.isConfirmed) {                                   
+                livewire.emit(param.liveWire_action_confirm,is_empty(param.parm_confirm));        
+            }
+
+            if (result.isDenied) { 
+                livewire.emit(param.liveWire_action_deny,is_empty(param.parm_deny));        
+            }
+        })
+    });
     Livewire.on('toast', (message,type) => {
         Toast.fire({
             icon: type,
@@ -72,6 +129,34 @@ document.addEventListener('livewire:load', () => {
         }).then(resp => console.log(JSON.stringify(resp, undefined, '  ')));
     });
 
-  
+    function is_empty(variavel) {
+        if (variavel === "undefined") {
+            return false
+        } else {
+            return variavel
+        }
+    }
+
+    function sizeSwalModal(message) {
+        var width = '32em';
+        if (message.length > 20000) {
+            width = '50em';
+        } else if(message.length > 300) {
+            width = '40em';
+        }
+        return width;
+    }
+
+    window.getFormData =   function getFormData(params) {        
+        const formData = new FormData(document.getElementById('form-'+params.codigoForm));         
+        /* for (const pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        } */           
+        var object = {};
+        formData.forEach((value, key) => object[key] = value);
+        var json = JSON.stringify(object);
+        livewire.emit(params.enviarPara,json);
+        Swal.close();
+    }
 
 })
