@@ -1,120 +1,26 @@
 <?php
-namespace App\Packages\NFE;
+namespace App\Packages\NFE\Importador;
 
-use App\Packages\NFE\Importador\ImportadorMA;
 use GuzzleHttp\Client;
-use App\Packages\NFE\Tratacao;
+use App\Packages\NFE\Importador\Tratacao\TratacaoMG;
 use Symfony\Component\DomCrawler\Crawler;
-use App\Packages\NFE\Importador\ImportadorMG;
-use App\Packages\NFE\Importador\ImportadorMS;
-use App\Packages\NFE\Importador\ImportadorMT;
-use App\Packages\NFE\Importador\ImportadorPI;
-use App\Packages\NFE\Importador\ImportadorRO;
-use App\Packages\NFE\Importador\ImportadorRR;
-use App\Packages\NFE\Importador\ImportadorRS;
-use App\Packages\NFE\Importador\ImportadorSC;
-use App\Packages\NFE\Importador\ImportadorSP;
-use App\Packages\NFE\Importador\ImportadorTO;
 
-Class BuscadorQR{
 
-	public $link;
-	public $estado;	
-	public $importador;
+class ImportadorTO implements Importador {
 
-	public function __construct($link, $estado)
+    public $link;
+	public $trataDados;
+	public $client;
+
+    public function __construct($link)
 	{
 		$this->link = $link;
-		
-		switch ($estado) {
-			case 'AC':
-				$this->importador = new ImportadorAC($link);
-				break;
-			case 'AL':
-				$this->importador = new ImportadorAL($link);
-				break;
-			case 'AP':
-				$this->importador = new ImportadorAP($link);
-				break;
-			case 'AM':
-				$this->importador = new ImportadorAM($link);
-				break;
-			case 'BA':
-				$this->importador = new ImportadorBA($link);
-				break;
-			case 'CE':
-				$this->importador = new ImportadorCE($link);
-				break;
-			case 'DF':
-				$this->importador = new ImportadorDF($link);
-				break;
-			case 'ES':
-				$this->importador = new ImportadorES($link);
-				break;
-			case 'GO':
-				$this->importador = new ImportadorGO($link);
-				break;
-			case 'MA':
-				$this->importador = new ImportadorMA($link);
-				break;
-			case 'MT':
-				$this->importador = new ImportadorMT($link);
-				break;
-			case 'MS':
-				$this->importador = new ImportadorMS($link);
-				break;
-			case 'MG':
-				$this->importador = new ImportadorMG($link);
-				break;
-			case 'PA':
-				$this->importador = new ImportadorPA($link);
-				break;
-			case 'PB':
-				$this->importador = new ImportadorPB($link);
-				break;
-			case 'PR':
-				$this->importador = new ImportadorPR($link);
-				break;
-			case 'PE':
-				$this->importador = new ImportadorPE($link);
-				break;
-			case 'PI':
-				$this->importador = new ImportadorPI($link);
-				break;
-			case 'RJ':
-				$this->importador = new ImportadorRS($link);
-				break;
-			case 'RN':
-				$this->importador = new ImportadorRN($link);
-				break;
-			case 'RS':
-				$this->importador = new ImportadorRS($link);
-				break;
-			case 'RO':
-				$this->importador = new ImportadorRO($link);
-				break;
-			case 'RR':
-				$this->importador = new ImportadorRR($link);
-				break;
-			case 'SC':
-				$this->importador = new ImportadorSC($link);
-				break;
-			case 'SP':
-				$this->importador = new ImportadorSP($link);
-				break;
-			case 'SE':
-				$this->importador = new ImportadorSE($link);
-				break;
-			case 'TO':
-				$this->importador = new ImportadorTO($link);
-				break;
-			default:
-				echo 'Estado inválido ou não reconhecido';
-				break;
-		}
+		$this->trataDados = new TratacaoMG();
+		$this->client = new Client();
 	}
 	
-	public function getItensCupomQrCode(){
+	public function getDadosCupom() :array
+    {
 		$response = $this->client->request('GET', $this->link);
 		$html = $response->getBody();
 		$crawler = new Crawler();
@@ -214,7 +120,4 @@ Class BuscadorQR{
 			'dadosCompra'=>$dados_compra
 		);
 	}
-
 }
-
-
